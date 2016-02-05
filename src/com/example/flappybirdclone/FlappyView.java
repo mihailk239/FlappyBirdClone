@@ -78,38 +78,36 @@ public class FlappyView extends View {
 				birdie.vy += 8;
 
 			}
-			for (Tube t : tubes) {
+			for(Tube t: tubes) {
 				t.left -= V;
 				t.right -= V;
 				if (state == State.OUT_TUBE) {
-					if (birdie.x >= t.left && birdie.x <= t.right) {
-						state = State.IN_TUBE;
-					}
+					if (birdie.x >= t.left && birdie.x <= t.right){
+						state = State.IN_TUBE;}
 				}
-
+				
 				if (state == State.IN_TUBE) {
-					if (birdie.y >= t.bottom || birdie.y <= t.top
-							&& (w1 / 5.0f >= t.left) && (w1 / 5.0f <= t.right)) {
+					if (birdie.y >= t.bottom || birdie.y <= t.top && (w1 /5.0f >= t.left) && (w1 /5.0f <= t.right)) {
 						state = State.LOSE;
 					}
 				}
 			}
 
+			
 			if (k == 300) {
 				float r1 = (float) (Math.random() * getWidth() / 2 + getWidth() / 10);
 				float r2 = (float) (Math.random() * getHeight() * 3 / 4);
 
 				tubes.add(new Tube(getWidth(), getWidth() + getWidth() / 20,
-						r2, r2 + r1));
+						r2, r2+r1));
 			}
 			k++;
-			// for (Tube t : tubes) {
-			// if (t.right < 0)
-			// tubes.remove(t);
-			// }
+//			for (Tube t : tubes) {
+//				if (t.right < 0)
+//					tubes.remove(t);
+//			}
 		}
 
-		// запоминать в какую трубу влетаем и сравнивать с ней?
 		@Override
 		public void onFinish() {
 			start();
