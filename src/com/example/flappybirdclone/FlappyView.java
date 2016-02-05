@@ -107,7 +107,7 @@ public class FlappyView extends View {
 //					tubes.remove(t);
 //			}
 		}
-
+// запоминать в какую трубу влетаем и сравнивать с ней?
 		@Override
 		public void onFinish() {
 			start();
